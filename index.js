@@ -9,8 +9,14 @@ app.use(cors());
 
 app.use('/',router);
 
-const PORT= process.env.PORT || 8000;
+const PORT = process.env.PORT || 8000;
+
+app.get("/health", (req, res) => {
+  res.status(200).json({ status: "ok" });
+});
 
 DBConnection();
 
-app.listen(PORT, ()=> console.log(`Server is running on PORT ${PORT}`));
+app.listen(PORT, () => {
+  console.log(`Server is running on PORT ${PORT}`);
+});
